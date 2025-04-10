@@ -9,8 +9,8 @@ class Solution:
             if t[i] == s[counter]:
                 counter += 1
 
-                if counter == len(s):
-                    return True
+            if counter == len(s):
+                return True
 
         return False
                 
