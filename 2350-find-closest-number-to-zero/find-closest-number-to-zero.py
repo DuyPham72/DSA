@@ -5,8 +5,8 @@ class Solution:
         for num in nums:
             if abs(num) < abs(result):
                 result = num
-            elif abs(num) == abs(result):
-                if num > result:
-                    result = num
+
+        if abs(result) in nums:
+            return abs(result)
 
         return result                    
