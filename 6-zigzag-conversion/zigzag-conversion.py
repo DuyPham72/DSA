@@ -3,23 +3,23 @@ class Solution:
         if numRows == 1:
             return s
 
-        d = 1
-        i = 0
+        result = [[] for _ in range(numRows)]
 
-        matrix = [[] for _ in range(numRows)]
+        i = 0
+        d = 1
 
         for word in s:
-            matrix[i].append(word)
+            result[i].append(word)
 
             if i == 0:
                 d = 1
-            elif i == numRows-1:
+            elif i == numRows - 1:
                 d = -1
-            
+
             i += d
 
-        result = ""
-        for i in range(numRows):
-            result += ''.join(matrix[i])
+        answer = []
+        for j in range(numRows):
+            answer += result[j]
 
-        return result
+        return "".join(answer)
