@@ -6,12 +6,13 @@ class Solution:
         temp = 0
 
         for i in range(n):
-            if i < n-1 and prices[i] > prices[i+1]:
-                min_price = prices[i+1]
-                max_profit += temp
-                temp = 0
-            elif i < n-1 and prices[i] < prices[i+1]:
-                temp = max(temp, prices[i+1] - min_price)
+            if i < n-1:
+                if prices[i] > prices[i+1]:
+                    min_price = prices[i+1]
+                    max_profit += temp
+                    temp = 0
+                elif prices[i] < prices[i+1]:
+                    temp = max(temp, prices[i+1] - min_price)
 
         max_profit += temp
 
