@@ -3,13 +3,18 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        count = [0, 0, 0]
+        n = len(nums)
+        i = 0
+        j = n-1
+        k = 0
 
-        for color in nums:
-            count[color] += 1
-
-        R, W, B = count
-
-        nums[:R] = [0]*R
-        nums[R:R+W] = [1]*W
-        nums[R+W:] = [2]*B
+        while k <= j:
+            if nums[k] == 0:
+                nums[k], nums[i] = nums[i], nums[k]
+                i += 1
+                k += 1
+            elif nums[k] == 2:
+                nums[k], nums[j] = nums[j], nums[k]
+                j -= 1
+            else:
+                k += 1
