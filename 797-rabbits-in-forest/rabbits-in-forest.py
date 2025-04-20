@@ -5,7 +5,7 @@ class Solution:
 
         for answer, freq in count.items():
             group_size = answer + 1
-            num_groups = (freq + answer) // group_size
+            num_groups = ceil(freq / group_size)
             result += num_groups * group_size
 
         return result
