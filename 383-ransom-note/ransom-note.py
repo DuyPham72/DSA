@@ -5,9 +5,10 @@ class Solution:
         for note in ransomNote:
             if note not in letter:
                 return False
-            elif letter[note] == 0:
+
+            if letter[note] == 0:
                 return False
-            else:
-                letter[note] -= 1
+                
+            letter[note] -= 1
 
         return True
