@@ -1,6 +1,15 @@
 class Solution:
     def maxNumberOfBalloons(self, text: str) -> int:
         table = Counter(text)
-        balloon = Counter("balloon")
+        word = "balloon"
+        require = Counter(word)
         
-        return min(table[ch] // balloon[ch] for ch in balloon)
+        result = []
+
+        for char in word:
+            if char not in table:
+                return 0
+
+            result.append(table[char] // require[char])
+
+        return min(result)
