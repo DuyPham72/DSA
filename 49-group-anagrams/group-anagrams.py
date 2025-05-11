@@ -3,12 +3,7 @@ class Solution:
         result = defaultdict(list)
 
         for word in strs:
-            key = [0 for _ in range(26)]
-
-            for letter in word:
-                key[ord(letter) - ord('a')] += 1
-
-            key = tuple(key)
+            key = tuple(sorted(word))
             result[key].append(word)
 
-        return [value for value in result.values()]
+        return list(result.values())
