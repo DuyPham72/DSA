@@ -4,9 +4,6 @@ class Solution:
             row = set()
             column = set()
             for j in range(9):
-                if board[i][j] == "." and board[j][i] == ".":
-                    continue
-
                 if board[i][j] != "." and board[i][j] in row:
                     return False
 
@@ -23,10 +20,9 @@ class Solution:
                     for j in range(3):
                         cell = board[box_row + i][box_col + j]
 
-                        if cell != ".":
-                            if cell in seen_box:
-                                return False
+                        if cell != "." and cell in seen_box:
+                            return False
 
-                            seen_box.add(cell)
+                        seen_box.add(cell)
 
         return True
