@@ -12,6 +12,7 @@ class Solution:
 
                 while (num + length) in set_nums:
                     length += 1
-                    result = max(result, length)
+                
+                result = max(result, length)
 
         return result
