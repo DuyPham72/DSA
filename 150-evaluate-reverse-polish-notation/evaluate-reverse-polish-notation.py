@@ -2,7 +2,7 @@ import math
 
 class Solution:
     def evalRPN(self, tokens: List[str]) -> int:
-        stack = []
+        stack = list()
 
         for c in tokens:
             if c == '+' or c == '-' or c == '*' or c == '/':
