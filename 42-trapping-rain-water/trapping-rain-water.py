@@ -2,23 +2,20 @@ class Solution:
     def trap(self, height: List[int]) -> int:
         n = len(height)
 
-        left, right = 0, 0
-        left_array = [0]*n
-        right_array = [0]*n
-
-        for i in range(n):
-            j  = -i -1
-
-            left_array[i] = left
-            right_array[j] = right
-            left = max(left, height[i])
-            right = max(right, height[j])
+        l, r = 0, n-1
+        lvalue = height[l]
+        rvalue = height[r]
 
         result = 0
-        for i in range(n):
-            expect = min(left_array[i], right_array[i])
 
-            if expect - height[i] > 0:
-                result += expect - height[i]
+        while l < r:
+            if lvalue < rvalue:
+                l += 1
+                lvalue = max(lvalue, height[l])
+                result += lvalue - height[l]
+            else:
+                r -= 1
+                rvalue = max(rvalue, height[r])
+                result += rvalue - height[r]
 
         return result
