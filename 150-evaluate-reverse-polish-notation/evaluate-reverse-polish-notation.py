@@ -19,4 +19,4 @@ class Solution:
             else:
                 stack.append(int(c))
 
-        return stack[0]
+        return stack.pop()
