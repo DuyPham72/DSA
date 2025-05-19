@@ -5,15 +5,14 @@ class Solution:
 
         left = 0
         right = n-1
-
         while left < right:
             x = right - left
             y = min(height[left], height[right])
             result = max(result, x*y)
 
-            if height[left] < height[right]:
-                left += 1
+            if height[left] > height[right]:
+                right -= 1
             else:
-                right -=1
+                left += 1
 
         return result
