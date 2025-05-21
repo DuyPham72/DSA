@@ -11,9 +11,9 @@ class Solution:
 
         while l < r:
             m = l + ((r-l) // 2)
-            if isBadVersion(m) == False:
-                l = m + 1
-            else:
+            if isBadVersion(m):
                 r = m
+            else:
+                l = m + 1
 
-        return r
+        return l
