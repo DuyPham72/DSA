@@ -15,13 +15,12 @@ class Solution:
         if pivot == 0:
             l = 0
             r = n-1
+        elif nums[0] <= target and nums[pivot-1] >= target:
+            l = 0
+            r = pivot-1      
         else:
-            if nums[0] <= target:
-                l = 0
-                r = pivot-1
-            else:
-                l = pivot
-                r = n-1
+            l = pivot
+            r = n-1
 
         while l <= r:
             m = l + ((r-l) // 2)
