@@ -1,10 +1,7 @@
 class Solution:
     def checkInclusion(self, s1: str, s2: str) -> bool:
-        ct = Counter(s1)
+        cntr = Counter(s1)
         n = len(s1)
-
-        for i, c in enumerate(s2):
-            if c in ct and Counter(s2[i:i+n]) == ct:
-                return True
-
+        for i, x in enumerate(s2):
+            if x in cntr and Counter(s2[i:i+n]) == cntr: return True
         return False
