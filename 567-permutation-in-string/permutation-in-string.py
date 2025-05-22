@@ -1,7 +1,25 @@
 class Solution:
     def checkInclusion(self, s1: str, s2: str) -> bool:
-        cntr = Counter(s1)
         n = len(s1)
-        for i, x in enumerate(s2):
-            if x in cntr and Counter(s2[i:i+n]) == cntr: return True
+        m = len(s2)
+
+        if n > m:
+            return False
+
+        c1 = [0]*26
+        c2 = [0]*26 
+        for i in range(n):
+            c1[ord(s1[i]) - ord('a')] += 1
+            c2[ord(s2[i]) - ord('a')] += 1
+        
+        if c1 == c2:
+            return True
+
+        for i in range(n, m):
+            c2[ord(s2[i]) - ord('a')] += 1
+            c2[ord(s2[i-n]) - ord('a')] -= 1
+
+            if c1 == c2:
+                return True
+
         return False
