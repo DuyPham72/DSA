@@ -6,6 +6,9 @@
 #         self.right = right
 class Solution:
     def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
+        if not root:
+            return False
+            
         def compare(root1: Optional[TreeNode], root2: Optional[TreeNode]) -> bool:
             if not root1 and not root2:
                 return True
@@ -16,9 +19,6 @@ class Solution:
                 return False
 
             return compare(root1.left, root2.left) and compare(root1.right, root2.right)
-
-        if not root:
-            return False
 
         if root.val == subRoot.val:
             value = compare(root, subRoot)
