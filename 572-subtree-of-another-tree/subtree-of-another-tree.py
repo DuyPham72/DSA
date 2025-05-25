@@ -4,25 +4,24 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
+def compare(root1: Optional[TreeNode], root2: Optional[TreeNode]) -> bool:
+    if not root1 and not root2:
+        return True
+    if not root1 or not root2:
+        return False
+
+    if root1.val != root2.val:
+        return False
+
+    return compare(root1.left, root2.left) and compare(root1.right, root2.right)
+
 class Solution:
     def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
         if not root:
             return False
-            
-        def compare(root1: Optional[TreeNode], root2: Optional[TreeNode]) -> bool:
-            if not root1 and not root2:
-                return True
-            if not root1 or not root2:
-                return False
-
-            if root1.val != root2.val:
-                return False
-
-            return compare(root1.left, root2.left) and compare(root1.right, root2.right)
 
         if root.val == subRoot.val:
-            value = compare(root, subRoot)
-            if value == True:
+            if compare(root, subRoot):
                 return True
 
         left = self.isSubtree(root.left, subRoot)
