@@ -19,7 +19,6 @@ class Solution:
                 dif = root.val - prev[0]
                 if dif < minx[0]:
                     minx[0] = dif
-
             prev[0] = root.val
 
             bfs(root.right)
