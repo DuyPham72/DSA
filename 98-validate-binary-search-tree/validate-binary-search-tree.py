@@ -12,7 +12,7 @@ class Solution:
 
             if root.val <= minx or root.val >= maxx:
                 return False
-            
+
             return valid(root.left, minx, root.val) and valid(root.right, root.val, maxx)
 
         return valid(root, float('-inf'), float('inf'))
