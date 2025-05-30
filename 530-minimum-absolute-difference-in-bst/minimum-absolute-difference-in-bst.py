@@ -16,12 +16,13 @@ class Solution:
             bfs(root.left)
 
             if prev[0] is not None:
-                minx[0] = min(minx[0], root.val - prev[0])
+                dif = root.val - prev[0]
+                if dif < minx[0]:
+                    minx[0] = dif
+
             prev[0] = root.val
 
             bfs(root.right)
-
-            return
 
         bfs(root)
         return minx[0]
