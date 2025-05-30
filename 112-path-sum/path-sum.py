@@ -9,10 +9,10 @@ class Solution:
         if not root:
             return False
 
-        if not root.left and not root.right:
-            return root.val == targetSum
+        if root.left is None and root.right is None and targetSum - root.val == 0:
+            return True
 
         left = self.hasPathSum(root.left, targetSum - root.val)
         right = self.hasPathSum(root.right, targetSum - root.val)
 
-        return left or right 
+        return left or right
