@@ -8,9 +8,8 @@ class Solution:
         while len(stones) > 1:
             stone1 = heapq.heappop(stones)
             stone2 = heapq.heappop(stones)
+            
+            if stone1 != stone2:
+                heapq.heappush(stones, stone1 - stone2)
 
-            result = stone1 - stone2
-            if result != 0:
-                heapq.heappush(stones, result)
-
-        return -stones[0] if len(stones) > 0 else 0
+        return -stones[0] if stones else 0
