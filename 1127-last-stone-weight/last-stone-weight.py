@@ -1,15 +1,16 @@
 class Solution:
     def lastStoneWeight(self, stones: List[int]) -> int:
         for i in range(len(stones)):
-            stones[i] *= -1 # Negate to force Max Heap
+            stones[i] = -stones[i]
 
         heapq.heapify(stones)
 
         while len(stones) > 1:
-            largest = heapq.heappop(stones)
-            next_largest = heapq.heappop(stones)
+            stone1 = heapq.heappop(stones)
+            stone2 = heapq.heappop(stones)
 
-            if largest != next_largest:
-                heapq.heappush(stones, largest - next_largest)
+            result = stone1 - stone2
+            if result != 0:
+                heapq.heappush(stones, result)
 
-        return -heapq.heappop(stones) if stones else 0
+        return -stones[0] if len(stones) > 0 else 0
