@@ -6,7 +6,7 @@ class Solution:
             if sum(temp) == target:
                 result.append(temp[:])
                 return
-            elif sum(temp) > target:
+            elif sum(temp) > target or i == len(candidates):
                 return
 
             for x in range(i, len(candidates)):
