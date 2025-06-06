@@ -19,5 +19,3 @@ class Solution:
 
         backtrack(0,0)
         return result
-
-        
