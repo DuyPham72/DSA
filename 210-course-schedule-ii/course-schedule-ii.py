@@ -1,24 +1,22 @@
 class Solution:
     def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
         g = defaultdict(list)
-        for a, b in prerequisites:
+        for a,b in prerequisites:
             g[a].append(b)
 
+        course = [0] * numCourses
         result = []
-        courses = [0]*numCourses
         def dfs(i):
-            node = courses[i]
-            if node == 1:
-                return False
-            if node == 2:
-                return True
+            node = course[i]
+            if node == 1: return False
+            if node == 2: return True
 
-            courses[i] = 1
-            for nei in g[i]:
-                if not dfs(nei):
+            course[i] = 1
+            for neighbor in g[i]:
+                if not dfs(neighbor):
                     return False
 
-            courses[i] = 2
+            course[i] = 2
             result.append(i)
             return True
 
