@@ -10,14 +10,14 @@ from typing import Optional
 class Solution:
     def cloneGraph(self, node: Optional['Node']) -> Optional['Node']:
         if not node:
-            return None
+            return node
 
-        g = {}
         start = node
+        g = {}
         seen = set()
         seen.add(start)
-        stack = [start]
 
+        stack = [start]
         while stack:
             node = stack.pop()
             g[node] = Node(node.val)
