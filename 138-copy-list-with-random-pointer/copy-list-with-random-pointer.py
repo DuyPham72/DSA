@@ -13,17 +13,16 @@ class Solution:
             return head
 
         table = {}
-
         curr = head
         while curr:
             table[curr] = Node(curr.val)
             curr = curr.next
 
         curr = head
-        while curr:
-            copy = table[curr]
-            copy.next = table.get(curr.next)
-            copy.random = table.get(curr.random)  
-            curr = curr.next 
+        for old, new in table.items():
+            new_next = table.get(old.next)
+            new_random = table.get(old.random)
+            new.next = new_next
+            new.random = new_random
 
         return table[head]
