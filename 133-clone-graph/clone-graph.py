@@ -29,7 +29,7 @@ class Solution:
 
         for old, new in g.items():
             for nei in old.neighbors:
-                new_nei = g[nei]
+                new_nei = g.get(nei)
                 new.neighbors.append(new_nei)
 
         return g[start]
