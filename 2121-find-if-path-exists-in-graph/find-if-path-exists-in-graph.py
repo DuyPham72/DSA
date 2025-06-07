@@ -10,17 +10,15 @@ class Solution:
 
         seen = set()
         seen.add(source)
+        stack = [source]
 
-        def dfs(node):
+        while stack:
+            node = stack.pop()
             if node == destination:
                 return True
+            for nei_node in dic[node]:
+                if nei_node not in seen:
+                    seen.add(nei_node)
+                    stack.append(nei_node)
 
-            for neighbor in dic[node]:
-                if neighbor not in seen:
-                    seen.add(neighbor)
-                    if dfs(neighbor):
-                        return True
-
-            return False
-
-        return dfs(source)
+        return False
