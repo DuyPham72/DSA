@@ -3,22 +3,21 @@ class Solution:
         if source == destination:
             return True
 
-        dic = defaultdict(list)
+        graph = defaultdict(list)
         for start, end in edges:
-            dic[start].append(end)
-            dic[end].append(start)
+            graph[start].append(end)
+            graph[end].append(start)
 
         seen = set()
         seen.add(source)
         stack = [source]
-
         while stack:
             node = stack.pop()
             if node == destination:
                 return True
-            for nei_node in dic[node]:
-                if nei_node not in seen:
-                    seen.add(nei_node)
-                    stack.append(nei_node)
+            for neighbor in graph[node]:
+                if neighbor not in seen:
+                    seen.add(neighbor)
+                    stack.append(neighbor)
 
         return False
