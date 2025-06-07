@@ -1,23 +1,21 @@
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
-        graph = defaultdict(list)
-        for start, end in prerequisites:
-            graph[start].append(end)
+        g = defaultdict(list)
+        for a, b in prerequisites:
+            g[a].append(b)
 
-        in_course = [0] * numCourses
+        courses = [0]*numCourses
         def dfs(i):
-            node = in_course[i]
-            if node == 1:
-                return False
-            if node == 2:
-                return True
+            node = courses[i]
+            if node == 1: return False
+            if node == 2: return True
 
-            in_course[i] = 1
-            for neighbor in graph[i]:
+            courses[i] = 1
+            for neighbor in g[i]:
                 if not dfs(neighbor):
                     return False
 
-            in_course[i] = 2
+            courses[i] = 2
             return True
 
         for i in range(numCourses):
