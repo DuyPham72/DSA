@@ -3,9 +3,9 @@ class Solution:
         if n <= 1:
             return n
 
-        tabulation = [0]*(n+1)
-        tabulation[1] = 1
+        prev = 0
+        curr = 1
         for i in range(2, n+1):
-            tabulation[i] = tabulation[i-1] + tabulation[i-2]
+            prev, curr = curr, prev + curr
 
-        return tabulation[n]
+        return curr
