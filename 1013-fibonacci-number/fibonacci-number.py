@@ -1,15 +1,11 @@
 class Solution:
     def fib(self, n: int) -> int:
-        memo= {}
-        memo[0] = 0
-        memo[1] = 1
+        if n <= 1:
+            return n
 
-        def dp(x):
-            if x in memo:
-                return memo[x]
-            
-            memo[x] = dp(x-1) + dp(x-2)
-            return memo[x]
+        tabulation = [0]*(n+1)
+        tabulation[1] = 1
+        for i in range(2, n+1):
+            tabulation[i] = tabulation[i-1] + tabulation[i-2]
 
-        return dp(n)
-            
+        return tabulation[n]
