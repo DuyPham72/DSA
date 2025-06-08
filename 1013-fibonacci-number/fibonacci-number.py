@@ -1,13 +1,15 @@
 class Solution:
     def fib(self, n: int) -> int:
-        memorization = {}
-        memorization[0] = 0
-        memorization[1] = 1
+        memo= {}
+        memo[0] = 0
+        memo[1] = 1
 
-        if n in memorization:
-            return memorization[n]
+        def dp(x):
+            if x in memo:
+                return memo[x]
+            
+            memo[x] = dp(x-1) + dp(x-2)
+            return memo[x]
 
-        for i in range(2, n+1):
-            memorization[i] = memorization[i-1] + memorization[i-2]
-
-        return memorization[n]
+        return dp(n)
+            
