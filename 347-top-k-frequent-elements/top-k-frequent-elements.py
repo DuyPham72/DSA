@@ -1,12 +1,20 @@
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        n = len(nums)
         counter = Counter(nums)
-        arr = []
+        arr = [0] * (n+1)
 
         for num, freq in counter.items():
-            if len(arr) < k:
-                heapq.heappush(arr, (freq, num))
-            else:
-                heapq.heappushpop(arr, (freq, num))
+            if arr[freq] == 0:
+                arr[freq] = []
+            arr[freq].append(num)
 
-        return [num for freq, num in arr]
+        result = []
+        for i in range(n, -1, -1):
+            if len(result) < k:
+                if arr[i] != 0:
+                    result.extend(arr[i])
+            else:
+                break
+
+        return result
