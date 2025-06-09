@@ -4,8 +4,7 @@ class Solution:
         goal = n-1
 
         for i in range(n-1, -1, -1):
-            current = nums[i]
-            if i + current >= goal:
+            if i + nums[i] >= goal:
                 goal = i
 
         return True if goal == 0 else False
