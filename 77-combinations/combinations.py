@@ -10,7 +10,7 @@ class Solution:
             for i in range(x, n+1):
                 if i not in temp:
                     temp.append(i)
-                    backtracking(i)
+                    backtracking(i+1)
                     temp.pop()
 
         backtracking(1)
