@@ -2,16 +2,16 @@ class Solution:
     def combine(self, n: int, k: int) -> List[List[int]]:
         result, temp = [], []
 
-        def backtrack(i):
+        def backtracking(x):
             if len(temp) == k:
                 result.append(temp[:])
                 return
 
-            for x in range(i, n+1):
-                temp.append(x)
-                backtrack(x+1)
-                temp.pop()
-                        
-        backtrack(1)
+            for i in range(x, n+1):
+                if i not in temp:
+                    temp.append(i)
+                    backtracking(i)
+                    temp.pop()
 
+        backtracking(1)
         return result
