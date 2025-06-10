@@ -3,7 +3,7 @@ class Solution:
         result, temp = [], []
 
         def backtrack(x, cur_sum):
-            if cur_sum > target or x == len(candidates):
+            if cur_sum > target:
                 return
             if cur_sum == target:
                 result.append(temp[:])
