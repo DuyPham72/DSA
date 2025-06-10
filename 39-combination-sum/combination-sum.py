@@ -3,17 +3,16 @@ class Solution:
         result, temp = [], []
 
         def backtrack(x, cur_sum):
-            if sum(temp) > target or x == len(candidates):
+            if cur_sum > target or x == len(candidates):
                 return
-            if sum(temp) == target:
+            if cur_sum == target:
                 result.append(temp[:])
                 return
 
-            backtrack(x+1, cur_sum)
-
-            temp.append(candidates[x])
-            backtrack(x, cur_sum + candidates[x])
-            temp.pop()
+            for i in range(x, len(candidates)):
+                temp.append(candidates[i])
+                backtrack(i, cur_sum + candidates[i])
+                temp.pop()
 
         backtrack(0, 0)
         return result
