@@ -1,12 +1,7 @@
 class Solution:
     def singleNumber(self, nums: List[int]) -> int:
-        hashmap = {}
-        for num in nums:
-            if num not in hashmap:
-                hashmap[num] = 1
-            else:
-                hashmap[num] += 1
+        result = 0
+        for i in nums:
+            result ^= i
 
-        for key, value in hashmap.items():
-            if value == 1:
-                return key
+        return result
