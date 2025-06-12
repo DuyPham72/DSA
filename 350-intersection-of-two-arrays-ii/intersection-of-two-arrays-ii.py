@@ -11,11 +11,8 @@ class Solution:
         result = []
         small_hash = Counter(small)
         for num in large:
-            if num in small_hash:
+            if small_hash.get(num, 0) > 0:
                 result.append(num)
                 small_hash[num] -= 1
-
-                if small_hash[num] == 0:
-                    small_hash.pop(num)
 
         return result
