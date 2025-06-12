@@ -1,15 +1,9 @@
 class Solution:
-    def intersect(self, num1: List[int], num2: List[int]) -> List[int]:
-        n = len(num1)
-        m = len(num2)
-
-        if n > m:
-            small, large = num2, num1
-        else:
-            small, large = num1, num2
+    def intersect(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        small, large = (nums1, nums2) if len(nums1) <= len(nums2) else (nums2, nums1)
+        small_hash = Counter(small)
 
         result = []
-        small_hash = Counter(small)
         for num in large:
             if small_hash.get(num, 0) > 0:
                 result.append(num)
