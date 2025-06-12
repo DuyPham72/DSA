@@ -10,9 +10,9 @@ class Solution:
             y = min(height[left], height[right])
             result = max(result, x*y)
 
-            if height[left] > height[right]:
-                right -= 1
-            else:
+            if height[left] < height[right]:
                 left += 1
+            else:
+                right -= 1
 
         return result
