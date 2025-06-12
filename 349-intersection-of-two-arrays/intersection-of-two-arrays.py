@@ -1,6 +1,18 @@
 class Solution:
     def intersection(self, nums1: List[int], nums2: List[int]) -> List[int]:
-        set1 = set(nums1)
-        set2 = set(nums2)
+        n = len(nums1)
+        m = len(nums2)
 
-        return list(set1.intersection(set2))
+        if n > m:
+            small, large = nums2, nums1
+        else:
+            small, large = nums1, nums2
+
+        result = []
+        small_set = set(small)
+        for num in large:
+            if num in small_set:
+                result.append(num)
+                small_set.remove(num)
+
+        return result
