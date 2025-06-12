@@ -5,7 +5,8 @@ class Solution:
             if num in hashmap:
                 if i - hashmap[num] <= k:
                     return True
-
             hashmap[num] = i
 
         return False
+
+        # i want to have a way to keep track of index of last appear of num
