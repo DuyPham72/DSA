@@ -1,19 +1,14 @@
 class Solution:
     def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
-        hashmap = {}
-        for idx, value in enumerate(nums2):
-            hashmap[value] = idx
-            
-        result = []
-        for num in nums1:
-            ans = -1
-            idx = hashmap.get(num)
+        next_greater = {}
+        stack = []
+        for num in nums2:
+            while stack and stack[-1] < num:
+                temp = stack.pop()
+                next_greater[temp] = num
+            stack.append(num)
 
-            for j in range(idx + 1, len(nums2)):
-                if num < nums2[j]:
-                    ans = nums2[j]
-                    break
+        for num in stack:
+            next_greater[num] = -1
 
-            result.append(ans)
-
-        return result
+        return [next_greater[num] for num in nums1]
