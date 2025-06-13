@@ -12,3 +12,7 @@ class Solution:
             next_greater[num] = -1
 
         return [next_greater[num] for num in nums1]
+
+        # Monotomic Stack (TC: O(M+N), SC: O(nums2))
+        # Stack that the above element is less than the above element
+        # If larger, pop below
