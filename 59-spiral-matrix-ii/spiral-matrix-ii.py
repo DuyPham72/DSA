@@ -1,46 +1,29 @@
 class Solution:
     def generateMatrix(self, n: int) -> List[List[int]]:
-        up, right, down, left = 0, 1, 2, 3
-        direction = right
+        top, bottom = 0, n-1
+        left, right = 0, n-1
+        num = 1
 
-        top_bound = 0
-        right_bound = down_bound = n
-        left_bound = -1
+        ans = [[0]*n for _ in range(n)]
+        while num <= n**2:
+            for j in range(left, right + 1):
+                ans[top][j] = num
+                num += 1
+            top += 1
 
-        i = j = 0
+            for i in range(top, bottom + 1):
+                ans[i][right] = num
+                num += 1
+            right -= 1
 
-        ans = [[0 for _ in range(n)] for _ in range(n)]
+            for j in range(right, left - 1, -1):
+                ans[bottom][j] = num
+                num += 1
+            bottom -= 1
 
-        for num in range(1, n**2+1):
-            ans[i][j] = num
-
-            if direction == right:    
-                j += 1
-                if j == right_bound:
-                    j -= 1
-                    i += 1
-                    direction = down
-                    right_bound -= 1
-            elif direction == down:
-                i += 1
-                if i == down_bound:
-                    i -= 1
-                    j -= 1
-                    direction = left
-                    down_bound -= 1
-            elif direction == left:
-                j -= 1
-                if j == left_bound:
-                    j += 1
-                    i -= 1
-                    direction = up
-                    left_bound += 1
-            else:
-                i -= 1
-                if i == top_bound:
-                    i += 1
-                    j += 1
-                    direction = right
-                    top_bound += 1
+            for i in range(bottom, top-1, -1):
+                ans[i][left] = num
+                num += 1
+            left += 1
 
         return ans
