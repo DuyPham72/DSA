@@ -3,9 +3,8 @@ class Solution:
         count = Counter(nums)
 
         ans = 0
-        for key, value in count.items():
-            temp = count.get(key+1, 0)
-            if temp:
-                ans = max(ans, value + temp)
+        for num in count:
+            if num+1 in count:
+                ans = max(ans, count[num] + count[num+1])
 
         return ans
