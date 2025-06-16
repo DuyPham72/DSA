@@ -1,7 +1,7 @@
 class Solution:
     def generateMatrix(self, n: int) -> List[List[int]]:
-        top, bottom = 0, n-1
-        left, right = 0, n-1
+        top = left = 0
+        bottom = right = n-1
         num = 1
 
         ans = [[0]*n for _ in range(n)]
