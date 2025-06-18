@@ -6,19 +6,17 @@ class Solution:
         m = len(matrix)
         n = len(matrix[0])
 
-        zeros_location = []
+        zero_row = set()
+        zero_col = set()
         for i in range(m):
             for j in range(n):
                 if matrix[i][j] == 0:
-                    zeros_location.append([i, j])
+                    zero_row.add(i)
+                    zero_col.add(j)
 
-        for pair in zeros_location:
-            row, col = pair
+        for r in zero_row:
+            matrix[r] = len(matrix[r]) * [0]
 
-            for i in range(m):
-                if matrix[i][col] != 0:
-                    matrix[i][col] = 0
-
-            for j in range(n):
-                if matrix[row][j] != 0:
-                    matrix[row][j] = 0
+        for c in zero_col:
+            for row in matrix:
+                row[c] = 0
