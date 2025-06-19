@@ -1,7 +1,7 @@
 class Solution:
     def validPath(self, n: int, edges: List[List[int]], source: int, destination: int) -> bool:
-        if source == destination:
-            return True
+        # if source == destination:
+        #     return True
 
         graph = defaultdict(list)
         for start, end in edges:
@@ -19,5 +19,5 @@ class Solution:
                 if neighbor not in seen:
                     seen.add(neighbor)
                     stack.append(neighbor)
-                    
+
         return False
