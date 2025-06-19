@@ -19,4 +19,5 @@ class Solution:
                 if neighbor not in seen:
                     seen.add(neighbor)
                     stack.append(neighbor)
+                    
         return False
