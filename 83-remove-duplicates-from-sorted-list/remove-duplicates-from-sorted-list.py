@@ -10,9 +10,11 @@ class Solution:
 
         curr = head
         while curr.next:
-            if curr.val == curr.next.val:
-                curr.next = curr.next.next
+            after = curr.next
+            if after.val == curr.val:
+                curr.next = after.next
             else:
                 curr = curr.next
+
 
         return head
