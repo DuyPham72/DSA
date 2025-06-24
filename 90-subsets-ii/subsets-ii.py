@@ -2,16 +2,16 @@ class Solution:
     def subsetsWithDup(self, nums: List[int]) -> List[List[int]]:
         nums.sort()
         result, temp = [], []
-        seen = set()
         def backtrack(x):
-            if tuple(temp) not in seen:
-                result.append(temp[:])
-                seen.add(tuple(temp[:]))
-
+            result.append(temp[:])
+                
+            prev = None
             for i in range(x, len(nums)):
-                temp.append(nums[i])
-                backtrack(i+1)
-                temp.pop()
+                if nums[i] != prev:
+                    temp.append(nums[i])
+                    backtrack(i+1)
+                    temp.pop()
+                    prev = nums[i]
 
         backtrack(0)
         return result
