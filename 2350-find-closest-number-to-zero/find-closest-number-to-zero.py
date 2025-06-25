@@ -1,12 +1,9 @@
 class Solution:
     def findClosestNumber(self, nums: List[int]) -> int:
-        result = nums[0]
+        ans = float('inf')
 
         for num in nums:
-            if abs(num) < abs(result):
-                result = num
+            if abs(num) <= abs(ans):
+                ans = num
 
-        if abs(result) in nums:
-            return abs(result)
-
-        return result                    
+        return ans if abs(ans) not in nums else abs(ans)
