@@ -11,13 +11,10 @@ class Solution:
         }
 
         ans = 0
-        prev = None
-        for letter in s:
-            integer = roman[letter]
-            if prev != None and prev < integer:
-                ans -= 2*prev
+        for a, b in zip(s, s[1:]):
+            if roman[a] < roman[b]:
+                ans -= roman[a]
+            else:
+                ans += roman[a]
 
-            ans += integer
-            prev = integer
-
-        return ans
+        return ans + roman[s[-1]]
