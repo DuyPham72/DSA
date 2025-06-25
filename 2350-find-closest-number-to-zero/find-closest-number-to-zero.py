@@ -3,7 +3,10 @@ class Solution:
         ans = nums[0]
 
         for num in nums[1:]:
-            if abs(num) <= abs(ans):
+            if abs(num) < abs(ans):
                 ans = num
+            elif abs(num) == abs(ans):
+                if num > ans:
+                    ans = num
 
-        return ans if abs(ans) not in nums else abs(ans)
+        return ans 
