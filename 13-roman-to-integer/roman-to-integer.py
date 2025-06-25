@@ -10,16 +10,14 @@ class Solution:
             'M' : 1000
         }
 
-        result = 0
+        ans = 0
+        prev = None
+        for letter in s:
+            integer = roman[letter]
+            if prev != None and prev < integer:
+                ans -= 2*prev
 
-        s = s.replace("IV", "IIII")
-        s = s.replace("IX", "VIIII")
-        s = s.replace("XL", "XXXX")
-        s = s.replace("XC", "LXXXX")
-        s = s.replace("CD", "CCCC")
-        s = s.replace("CM", "DCCCC")
+            ans += integer
+            prev = integer
 
-        for num in s:
-            result += roman[num]
-
-        return result
+        return ans
