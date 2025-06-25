@@ -3,12 +3,12 @@ class Solution:
         if len(s) == 0:
             return True
 
-        counter = 0
+        temp = 0
         for i in range(len(t)):
-            if t[i] == s[counter]:
-                counter += 1
+            if s[temp] == t[i]:
+                temp += 1
 
-            if counter == len(s):
+            if temp == len(s):
                 return True
 
         return False
