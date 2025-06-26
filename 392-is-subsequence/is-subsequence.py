@@ -5,7 +5,7 @@ class Solution:
 
         temp = 0
         for i in range(len(t)):
-            if s[temp] == t[i]:
+            if t[i] == s[temp]:
                 temp += 1
 
             if temp == len(s):
