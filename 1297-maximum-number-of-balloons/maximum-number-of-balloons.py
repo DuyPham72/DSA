@@ -1,15 +1,15 @@
 class Solution:
     def maxNumberOfBalloons(self, text: str) -> int:
-        table = Counter(text)
-        word = "balloon"
-        require = Counter(word)
-        
-        result = []
+        word = 'balloon'
+        count = Counter(text)
+        ans = []
 
-        for char in word:
-            if char not in table:
-                return 0
+        for w in word:
+            value = count.get(w, 0)
 
-            result.append(table[char] // require[char])
+            if w == 'l' or w == 'o':
+                ans.append(value//2)
+            else:
+                ans.append(value)
 
-        return min(result)
+        return min(ans)
