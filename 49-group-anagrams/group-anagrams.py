@@ -1,9 +1,9 @@
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
-        result = defaultdict(list)
+        ans = defaultdict(list)
 
-        for word in strs:
-            key = tuple(sorted(word))
-            result[key].append(word)
+        for w in strs:
+            key = tuple(sorted(w))
+            ans[key].append(w)
 
-        return list(result.values())
+        return [value for value in ans.values()]
