@@ -3,16 +3,16 @@ class Solution:
         if not nums:
             return 0
 
-        set_nums = set(nums)
-        result = 1
+        count = set(nums)
+        ans = 1
 
-        for num in set_nums:
-            if (num - 1) not in set_nums:
+        for num in count:
+            if num-1 not in count:
                 length = 0
 
-                while (num + length) in set_nums:
+                while (num+length) in count:
                     length += 1
-                
-                result = max(result, length)
 
-        return result
+                ans = max(ans, length)
+
+        return ans
