@@ -3,23 +3,17 @@ class Solution:
         if numRows == 1:
             return s
 
-        result = [[] for _ in range(numRows)]
+        hold = [""] * numRows
+        idx = 0
+        direction = 1
+        
+        for w in s:
+            if idx == 0:
+                direction = 1
+            elif idx == numRows-1:
+                direction = -1
+            
+            hold[idx] += w
+            idx += direction
 
-        i = 0
-        d = 1
-
-        for word in s:
-            result[i].append(word)
-
-            if i == 0:
-                d = 1
-            elif i == numRows - 1:
-                d = -1
-
-            i += d
-
-        answer = []
-        for j in range(numRows):
-            answer += result[j]
-
-        return "".join(answer)
+        return "".join(hold)
