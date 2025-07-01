@@ -21,9 +21,6 @@ class Solution:
             ans = ans * 10 + digit
             i += 1
 
-        if ans == 0:
-            return 0
-
         ans = -ans if sign else ans
         if ans < -2**31:
             return -2**31
