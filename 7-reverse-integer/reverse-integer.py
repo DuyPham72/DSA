@@ -1,8 +1,8 @@
 class Solution:
     def reverse(self, x: int) -> int:
         ans = 0
-        num = abs(x)
 
+        num = abs(x)
         while num != 0:
             digit = num % 10
             ans = ans * 10 + digit
