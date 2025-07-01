@@ -3,10 +3,6 @@ class Solution:
         if len(str(x)) == 1:
             return x
 
-        sign = False
-        if x < 0:
-            sign = True
-
         num = str(abs(x))
         num = num[::-1]
 
@@ -18,4 +14,4 @@ class Solution:
         if ans < pow(-2, 31) or ans > pow(2, 31)-1:
             return 0
 
-        return - int(num[i:]) if sign else int(num[i:])
+        return - int(num[i:]) if x < 0 else int(num[i:])
