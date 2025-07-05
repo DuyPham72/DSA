@@ -4,7 +4,7 @@ class Solution:
 
         ans = -1
         for key, value in counter.items():
-            if key == value:
-                ans = key if key > ans else ans
+            if key == value and key > ans:
+                ans = key
 
         return ans
