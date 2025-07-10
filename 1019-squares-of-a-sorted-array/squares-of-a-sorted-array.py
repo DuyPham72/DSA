@@ -9,10 +9,11 @@ class Solution:
             right = nums[r]**2
 
             if left > right:
-                ans.insert(0, left) 
+                ans.append(left) 
                 l += 1
             else: 
-                ans.insert(0, right)
+                ans.append(right)
                 r -= 1
 
+        ans.reverse()
         return ans 
