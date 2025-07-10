@@ -5,14 +5,11 @@ class Solution:
         ans = []
 
         while l<=r:
-            left = nums[l]**2
-            right = nums[r]**2
-
-            if left > right:
-                ans.append(left) 
+            if abs(nums[l]) > abs(nums[r]):
+                ans.append(nums[l]**2) 
                 l += 1
             else: 
-                ans.append(right)
+                ans.append(nums[r]**2)
                 r -= 1
 
         ans.reverse()
