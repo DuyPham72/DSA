@@ -3,12 +3,10 @@ class Solution:
         l = 0
         r = len(numbers)-1
 
-        while l < r:
-            value = numbers[l] + numbers[r]
-            if value == target:
-                return [l+1, r+1]
-
-            if value > target:
+        while numbers[l] + numbers[r] != target:
+            if numbers[l] + numbers[r] > target:
                 r -= 1
             else:
                 l += 1
+
+        return [l+1, r+1]
