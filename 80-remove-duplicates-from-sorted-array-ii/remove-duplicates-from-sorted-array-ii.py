@@ -11,7 +11,7 @@ class Solution:
                 j += 1
             elif counter == 0 and nums[i] == nums[i-1]:
                 nums[j] = nums[i]
-                counter= 1
+                counter = 1
                 j += 1 
 
         return j
