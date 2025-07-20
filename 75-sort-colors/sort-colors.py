@@ -4,17 +4,17 @@ class Solution:
         Do not return anything, modify nums in-place instead.
         """
         n = len(nums)
+        l = 0
+        r = n-1
         i = 0
-        j = n-1
-        k = 0
-
-        while k <= j:
-            if nums[k] == 0:
-                nums[k], nums[i] = nums[i], nums[k]
+        
+        while i <= r:
+            if nums[i] == 0:
+                nums[i], nums[l] = nums[l], nums[i]
+                l += 1
                 i += 1
-                k += 1
-            elif nums[k] == 2:
-                nums[k], nums[j] = nums[j], nums[k]
-                j -= 1
+            elif nums[i] == 2:
+                nums[i], nums[r] = nums[r], nums[i]
+                r -= 1
             else:
-                k += 1
+                i += 1
