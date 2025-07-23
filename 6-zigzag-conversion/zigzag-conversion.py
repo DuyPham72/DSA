@@ -3,17 +3,17 @@ class Solution:
         if numRows == 1:
             return s
 
-        hold = [""] * numRows
-        idx = 0
+        hold = [''] * numRows
+        index = 0
         direction = 1
-        
-        for w in s:
-            if idx == 0:
-                direction = 1
-            elif idx == numRows-1:
-                direction = -1
-            
-            hold[idx] += w
-            idx += direction
 
-        return "".join(hold)
+        for w in s:
+            if index == 0:
+                direction = 1
+            elif index == numRows-1:
+                direction = -1
+
+            hold[index] += w
+            index += direction
+
+        return ''.join(hold)
