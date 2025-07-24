@@ -6,15 +6,8 @@ class Solution:
         if temp > n:
             return -1
 
-        for i in range(n):
-            if haystack[i] == needle[0]:
-                ans = i
-                for j in range(temp):
-                    if i+j >= n or haystack[i+j] != needle[j]:
-                        ans = -1
-                        break
-
-                if ans != -1:
-                    return ans
+        for i in range(n - temp + 1):
+            if haystack[i:i+temp] == needle:
+                return i
 
         return -1
