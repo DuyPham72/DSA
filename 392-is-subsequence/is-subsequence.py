@@ -1,14 +1,15 @@
 class Solution:
     def isSubsequence(self, s: str, t: str) -> bool:
-        if len(s) == 0:
-            return True
+        position = 0
+        for word in s:
+            check = False
+            for i in range(position, len(t)):
+                if t[i] == word:
+                    position = i+1
+                    check = True
+                    break
 
-        temp = 0
-        for i in range(len(t)):
-            if t[i] == s[temp]:
-                temp += 1
+            if not check:
+                return False
 
-            if temp == len(s):
-                return True
-
-        return False
+        return True
