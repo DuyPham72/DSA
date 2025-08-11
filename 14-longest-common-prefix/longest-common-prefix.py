@@ -6,14 +6,10 @@ class Solution:
             if n == 0:
                 break
             
-            count = 0
             m = len(word)
             for i in range(max(n, m)):
-                if i < n and i < m and res[i] == word[i]:
-                    count += 1
-                else:
+                if i >= n or i >= m or res[i] != word[i]:
+                    res = res[:i]
                     break
-
-            res = res[:count]
 
         return res
