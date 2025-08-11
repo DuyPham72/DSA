@@ -3,20 +3,19 @@ class Solution:
         if len(nums) == 0:
             return []
 
-        ans = []
+        res = []
         start = nums[0]
         for i in range(1, len(nums)):
             if nums[i] != nums[i-1] + 1:
-                if nums[i-1] != start:
-                    ans.append("{}->{}".format(start, nums[i-1]))
+                if start == nums[i-1]:
+                    res.append(f'{start}')
                 else:
-                    ans.append("{}".format(start))
-
+                    res.append(f'{start}->{nums[i-1]}')
                 start = nums[i]
 
-        if start != nums[-1]:
-            ans.append("{}->{}".format(start, nums[-1]))
+        if nums[-1] == start:
+            res.append(f'{start}')
         else:
-            ans.append("{}".format(start))
+            res.append(f'{start}->{nums[-1]}')
 
-        return ans
+        return res
