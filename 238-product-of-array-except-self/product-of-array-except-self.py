@@ -1,6 +1,5 @@
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
-        n = len(nums)
         zero = 0
         product = 1
 
@@ -11,7 +10,7 @@ class Solution:
                 zero += 1
 
         if zero > 1:
-            return [0]*n
+            return [0]*len(nums)
 
         ans = []
         if zero == 1:
