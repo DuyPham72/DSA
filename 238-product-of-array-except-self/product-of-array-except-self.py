@@ -13,14 +13,13 @@ class Solution:
             return [0]*len(nums)
 
         ans = []
-        if zero == 1:
-            for num in nums:
+        for num in nums:
+            if zero == 1:
                 if num == 0:
                     ans.append(product)
                 else:
                     ans.append(0)
-        else:
-            for num in nums:
+            else:
                 ans.append(product//num)
 
         return ans
