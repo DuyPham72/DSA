@@ -1,11 +1,12 @@
 class Solution:
     def canConstruct(self, ransomNote: str, magazine: str) -> bool:
-        count = Counter(magazine)
+        temp = Counter(magazine)
 
-        for word in ransomNote:
-            if count.get(word, 0) == 0:
+        for c in ransomNote:
+            value = temp.get(c, 0)
+            if value == 0:
                 return False
-            
-            count[word] -= 1
+
+            temp[c] -= 1
 
         return True
