@@ -1,15 +1,14 @@
 class Solution:
     def maxNumberOfBalloons(self, text: str) -> int:
-        word = 'balloon'
-        count = Counter(text)
-        ans = []
+        word = "balloon"
+        T = Counter(text)
+        temp = []
 
-        for w in word:
-            value = count.get(w, 0)
-
-            if w == 'l' or w == 'o':
-                ans.append(value//2)
+        for c in word:
+            value = T.get(c, 0)
+            if c == 'l' or c == 'o':
+                temp.append(value//2)
             else:
-                ans.append(value)
+                temp.append(value)
 
-        return min(ans)
+        return min(temp)
