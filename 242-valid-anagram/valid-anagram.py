@@ -3,4 +3,4 @@ class Solution:
         S = Counter(s)
         T = Counter(t)
 
-        return True if S.items() == T.items() else False
+        return True if S == T else False
