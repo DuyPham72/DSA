@@ -1,16 +1,13 @@
-import re
-
 class Solution:
     def isPalindrome(self, s: str) -> bool:
-        preprocess = re.sub(r'[^a-z0-9]', '', s.lower())
+        s = s.lower()
+        letters = re.findall(f"[a-z0-9]",s)
+        new_s = ''.join(letters)
+        print(new_s)
         
-        l = 0
-        r = len(preprocess)-1
-        while l<r:
-            if preprocess[l] != preprocess[r]:
+        n = len(new_s)
+        for i in range(n//2):
+            if new_s[i] != new_s[-i-1]:
                 return False
-
-            l +=1 
-            r -= 1
 
         return True
