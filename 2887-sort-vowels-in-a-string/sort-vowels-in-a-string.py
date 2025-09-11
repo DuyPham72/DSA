@@ -1,6 +1,6 @@
 class Solution:
     def sortVowels(self, s: str) -> str:
-        vowel_set = set(['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'])
+        vowel_set = set('aeiouAEIOU')
         vowel = []
 
         for c in s:
