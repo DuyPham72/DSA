@@ -13,8 +13,7 @@ class Solution:
         j = 0
         for i in range(len(s)):
             if s[i] in vowel_set:
-                idx, value = vowel[j]
-                s[i] = value
+                s[i] = vowel[j][1]
                 j += 1
 
         return "".join(s)
