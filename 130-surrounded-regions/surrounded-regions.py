@@ -6,33 +6,26 @@ class Solution:
         row = len(board)
         col = len(board[0])
 
-        edge_set = set()
+        def edge_cover(i, j):
+            if i < 0 or j < 0 or i >= row or j >= col or board[i][j] != 'O':
+                return
 
-        def edge_check(i, j, temp):
-            if i < 0 or i > row-1 or j < 0 or j > col-1:
-                return False
-            if board[i][j] == 'X':
-                return True
+            board[i][j] = 'D'
+            edge_cover(i+1, j)
+            edge_cover(i+-1, j)
+            edge_cover(i, j+1)
+            edge_cover(i, j-1)
 
-            temp.add((i, j))
-            for m, n in [(0,1), (0,-1), (1,0), (-1,0)]:
-                x = i+m
-                y = j+n
-                if (x, y) not in temp:
-                    value = edge_check(x, y, temp)
-                    if not value:
-                        return False
-
-            return True
+        for i in range(row):
+            edge_cover(i, 0)
+            edge_cover(i, col-1)
+        for j in range(col):
+            edge_cover(0, j)
+            edge_cover(row-1, j)
 
         for i in range(row):
             for j in range(col):
-                if board[i][j] == 'O' and (i, j) not in edge_set:
-                    temp = set()
-                    value = edge_check(i, j, temp) 
-
-                    if value:
-                        for x, y in temp:
-                            board[x][y] = 'X'
-                    else:
-                        edge_set.update(temp)
+                if board[i][j] == 'O':
+                    board[i][j] = 'X'
+                elif board[i][j] == 'D':
+                    board[i][j] = 'O'
