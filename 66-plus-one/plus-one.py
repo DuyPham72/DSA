@@ -1,19 +1,16 @@
 class Solution:
     def plusOne(self, digits: List[int]) -> List[int]:
-        temp = 0
-        n = len(digits)
-        for i in range(n-1, -1, -1):
-            value = digits[i] + 1
+        temp = True
+        for i in range(len(digits)-1, -1, -1):
+            if temp == True:
+                digits[i] += 1
+                temp = False
 
-            if value == 10:
-                digits[i] = value%10
-                temp = 1
-            else:
-                digits[i] = value
-                temp = 0
-                break
+            if digits[i] == 10:
+                digits[i] = 0
+                temp = True
 
-        if temp == 1:
-            digits.insert(0, temp)
+        if temp == True:
+            digits.insert(0, 1)
 
         return digits
