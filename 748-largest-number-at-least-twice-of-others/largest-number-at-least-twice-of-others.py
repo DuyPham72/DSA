@@ -1,7 +1,7 @@
 class Solution:
     def dominantIndex(self, nums: List[int]) -> int:
-        largest = [None, -float('inf')]
-        second_largest = [None, -float('inf')]
+        largest = [None, -1]
+        second_largest = [None, -1]
 
         for i, num in enumerate(nums):
             if num > largest[1]:
