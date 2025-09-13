@@ -1,9 +1,9 @@
 class Solution:
     def findDiagonalOrder(self, mat: List[List[int]]) -> List[int]:
         m, n = len(mat), len(mat[0])
+        r, c = 0, 0
         res=[]
-        r=0
-        c=0
+        
         for _ in range(m*n):
             res.append(mat[r][c])
             if (r+c)%2==0:
