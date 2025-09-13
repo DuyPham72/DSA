@@ -8,8 +8,10 @@ class Solution:
 
         for key, value in freq_dict.items():
             if key in vowel:
-                max_vowel = value if value > max_vowel else max_vowel
+                if value > max_vowel:
+                    max_vowel = value 
             else:
-                max_conso = value if value > max_conso else max_conso
+                if value > max_conso:
+                    max_conso = value 
         
         return max_vowel + max_conso
