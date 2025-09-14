@@ -4,20 +4,10 @@ class Solution:
         ans = [0] * n
         stack = []
 
-        for i in range(n - 1, -1, -1):
-            temp = temperatures[i]
-
-            # pop all smaller or equal temps
-            while stack and temp >= stack[-1][1]:
-                stack.pop()
-
-            # if stack not empty, next warmer day is at stack[-1][0]
-            if stack:
-                ans[i] = stack[-1][0] - i
-            else:
-                ans[i] = 0
-
-            # push current day onto stack
-            stack.append((i, temp))
+        for i, temp in enumerate(temperatures):
+            while stack and temp > temperatures[stack[-1]]:
+                prev = stack.pop()
+                ans[prev] = i - prev
+            stack.append(i)
 
         return ans
