@@ -24,7 +24,7 @@ class Solution:
             
             if value % 2 == 0:
                 ans += '0'
-            elif value == 1:
+            else:
                 ans += '1'
 
             temp = 0 if value < 2 else 1
