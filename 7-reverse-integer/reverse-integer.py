@@ -1,16 +1,10 @@
 class Solution:
     def reverse(self, x: int) -> int:
-        ans = 0
+        temp = list(str(x))
+        sign = 0 if temp[0] != '-' else 1
 
-        num = abs(x)
-        while num != 0:
-            digit = num % 10
-            ans = ans * 10 + digit
-            num //= 10
+        for i in range((len(temp)-sign)//2):
+            temp[i+sign], temp[-1-i] = temp[-1-i], temp[i+sign]
 
-        ans = -ans if x < 0 else ans
-
-        if ans > 2**31 - 1 or ans < -2**31:
-            return 0
-
-        return ans
+        ans = int(''.join(temp))
+        return 0 if ans > 2**31 - 1 or ans < -2**31 else ans
