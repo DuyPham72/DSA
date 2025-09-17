@@ -3,13 +3,10 @@ class Solution:
         n = len(haystack)
         m = len(needle)
 
-        for i in range(n):
+        for i in range(n-m+1):
             if haystack[i] == needle[0]:
                 temp = 1
-                while i+temp < n and temp < m:
-                    if haystack[i+temp] != needle[temp]:
-                        break
-
+                while temp < m and haystack[i+temp] == needle[temp]:
                     temp += 1
 
                 if temp == m:
