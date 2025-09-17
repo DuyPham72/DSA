@@ -3,7 +3,7 @@ class Solution:
         if numRows == 1:
             return s
 
-        ans = [[] for _ in range(numRows)]
+        ans = ['' for _ in range(numRows)]
 
         row = 0
         sign = 1
@@ -13,7 +13,7 @@ class Solution:
             elif row == numRows-1:
                 sign = -1
 
-            ans[row].append(c)
+            ans[row] += c
             row += sign
 
-        return ''.join(''.join(row) for row in ans)
+        return ''.join(ans)
