@@ -3,16 +3,15 @@ class Solution:
         largest = 0
         stack = []
 
-        for i, height in enumerate(heights):
-            start = i
-            while stack and stack[-1][1] > height:
-                idx, value = stack.pop()
-                largest = max(largest, value*(i-idx))
-                start = idx
+        for i, h in enumerate(heights):
+            temp = i
+            while stack and stack[-1][1] > h:
+                idx, height = stack.pop()
+                largest = max(largest, height * (i-idx))
+                temp = idx
+            stack.append([temp, h])
 
-            stack.append([start, height])
-
-        for i, height in stack:
-            largest = max(largest, height * (len(heights)-i))
+        for i, h in stack:
+            largest = max(largest, h * (len(heights)-i))
 
         return largest
