@@ -4,11 +4,10 @@ class Solution:
         r = len(numbers)-1
 
         while l < r:
-            value = numbers[l] + numbers[r]
-            if value == target:
-                return [l+1, r+1]
-
+            value = numbers[l] + numbers[r] 
             if value > target:
                 r -= 1
-            else:
+            elif value < target:
                 l += 1
+            else:
+                return [l+1, r+1]
