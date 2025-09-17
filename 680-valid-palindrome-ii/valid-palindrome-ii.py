@@ -1,35 +1,13 @@
 class Solution:
     def validPalindrome(self, s: str) -> bool:
-        l = 0
-        r = len(s)-1
-
-        delete = True
+        l, r= 0, len(s)-1
         while l < r:
-            if s[l] == s[r]:
-                l += 1
-                r -= 1
-            else:
-                if delete:
-                    i, j = l + 1, r
-                    ok1 = True
-                    while i < j:
-                        if s[i] != s[j]:
-                            ok1 = False
-                            break
-                        i += 1
-                        j -= 1
+            if s[l] != s[r]:
+                str1 = s[:l]+s[l+1:]
+                str2 = s[:r]+s[r+1:]
+                return str1 == str1[::-1] or str2 == str2[::-1]
 
-                    i, j = l, r - 1
-                    ok2 = True
-                    while i < j:
-                        if s[i] != s[j]:
-                            ok2 = False
-                            break
-                        i += 1
-                        j -= 1
-
-                    return ok1 or ok2
-                else:
-                    return False
+            l += 1
+            r -= 1
 
         return True
