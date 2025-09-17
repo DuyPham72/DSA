@@ -16,8 +16,4 @@ class Solution:
             ans[row].append(c)
             row += sign
 
-        temp = ''
-        for row in ans:
-            temp += ''.join(row)
-
-        return temp
+        return ''.join(''.join(row) for row in ans)
