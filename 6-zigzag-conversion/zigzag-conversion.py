@@ -3,17 +3,21 @@ class Solution:
         if numRows == 1:
             return s
 
-        hold = [''] * numRows
-        index = 0
-        direction = 1
+        ans = [[] for _ in range(numRows)]
 
-        for w in s:
-            if index == 0:
-                direction = 1
-            elif index == numRows-1:
-                direction = -1
+        row = 0
+        sign = 1
+        for c in s:
+            if row == 0:
+                sign = 1
+            elif row == numRows-1:
+                sign = -1
 
-            hold[index] += w
-            index += direction
+            ans[row].append(c)
+            row += sign
 
-        return ''.join(hold)
+        temp = ''
+        for row in ans:
+            temp += ''.join(row)
+
+        return temp
