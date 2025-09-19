@@ -4,6 +4,10 @@ class Solution:
         conso = 'qwrtypsdfghjklzxcvbnmQWRTYPSDFGHJKLZXCVBNM'
         valid = vowel + conso + '0123456789'
 
+        vowel = set(vowel)
+        conso = set(conso)
+        valid = set(valid)
+
         if len(word) < 3:
             return False
 
