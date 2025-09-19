@@ -1,1 +1,1 @@
-<h2>backspace-string-compare Notes</h2><hr>[ Time taken: 2 m 21 s ]
+<h2>backspace-string-compare Notes</h2><hr>[ Time taken: 4 m 6 s ]
