@@ -18,6 +18,4 @@ class Solution:
             if c not in valid:
                 return False
 
-        print(count1)
-        print(count2)
         return True if count1 > 0 and count2 > 0 else False
