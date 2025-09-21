@@ -1,7 +1,6 @@
 class Solution:
     def wordPattern(self, pattern: str, s: str) -> bool:
         temp_pattern = {}
-        temp_s = {}
         sett = set()
         new_s = s.split(' ')
         
