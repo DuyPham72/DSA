@@ -2,21 +2,21 @@ class Solution:
     def wordPattern(self, pattern: str, s: str) -> bool:
         temp_pattern = {}
         temp_s = {}
-        new_s = re.findall(r'[a-z]+', s)
+        new_s = s.split(' ')
         
         if len(pattern) != len(new_s):
             return False
 
-        for i, w in enumerate(pattern):
+        for w, c in zip(pattern, new_s):
             if w not in temp_pattern:
-                temp_pattern[w] = new_s[i]
+                temp_pattern[w] = c
             else:
-                if temp_pattern.get(w, None) != new_s[i]:
+                if temp_pattern.get(w, None) != c:
                     return False
 
-            if new_s[i] not in temp_s:
-                temp_s[new_s[i]] = w
+            if c not in temp_s:
+                temp_s[c] = w
             else:
-                if temp_s.get(new_s[i], None) != w:
+                if temp_s.get(c, None) != w:
                     return False
         return True
