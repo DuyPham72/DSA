@@ -6,11 +6,9 @@ class Solution:
         l, r = 1, n
         while l < r:
             m = (l+r)//2
-            if isBadVersion(m) == False:
-                l = m+1
+            if isBadVersion(m):
+                r = m
             else:
-                if isBadVersion(m-1) == False:
-                    return m
-                r = m-1
+                l = m+1
 
         return l
