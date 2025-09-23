@@ -1,18 +1,14 @@
 class Solution:
     def coinChange(self, coins: List[int], amount: int) -> int:
         coins.sort()
-        dp = [0] * (amount + 1)
+        dp = [float('inf')] * (amount + 1)
+        dp[0] = 0
 
         for i in range(1, amount + 1):
-            minn = float('inf')
-
             for coin in coins:
-                dif = i - coin
-                if dif < 0:
+                diff = i - coin
+                if diff < 0:  
                     break
+                dp[i] = min(dp[i], dp[diff] + 1)
 
-                minn = min(minn, dp[dif] + 1)
-
-            dp[i] = minn
-
-        return dp[amount] if dp[amount] < float('inf') else -1
+        return dp[-1] if dp[-1] < float('inf') else -1
