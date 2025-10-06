@@ -6,11 +6,10 @@ class Solution:
         idx = 0
 
         for c in s:
-            if c in temp:
-                while c in temp:
-                    temp.remove(s[idx])
-                    curr -= 1
-                    idx += 1
+            while c in temp:
+                temp.remove(s[idx])
+                curr -= 1
+                idx += 1
 
             temp.add(c)
             curr += 1
