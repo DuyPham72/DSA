@@ -5,9 +5,9 @@ class Solution:
 
         for r, char in enumerate(s):
             temp[char] = temp.get(char, 0) + 1
-            # curr_max = max(curr_max, temp[char])
+            curr_max = max(curr_max, temp[char])
 
-            while (r-l+1) - max(temp.values()) > k:
+            while (r-l+1) - curr_max > k:
                 temp[s[l]] -= 1
                 l += 1
 
