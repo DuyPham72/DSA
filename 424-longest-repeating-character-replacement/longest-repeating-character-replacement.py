@@ -1,16 +1,15 @@
 class Solution:
     def characterReplacement(self, s: str, k: int) -> int:
-        n = len(s)
+        temp = [0]*26
         longest = 0
-        arr = [0] * 26
-        l = 0
+        i = 0
 
-        for r in range(n):
-            arr[ord(s[r]) - 65] += 1
-            while (r-l+1) - max(arr) > k:
-                arr[ord(s[l]) - 65] -= 1
-                l += 1
+        for j in range(len(s)):
+            temp[ord(s[j])-65] += 1
+            while (j-i+1) - max(temp) > k:
+                temp[ord(s[i])-65] -= 1
+                i += 1
 
-            longest = max(longest, r-l+1)
+            longest = max(longest, (j-i+1))
 
         return longest
