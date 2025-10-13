@@ -3,12 +3,12 @@ class Solution:
         ans = []
         temp = None
 
-        for i in range(len(words)):
-            value = sorted(words[i])
+        for i, word in enumerate(words):
+            value = sorted(word)
             if i > 0 and value == temp:
                 continue
             else:
-                ans.append(words[i])
+                ans.append(word)
                 temp = value
 
         return ans
