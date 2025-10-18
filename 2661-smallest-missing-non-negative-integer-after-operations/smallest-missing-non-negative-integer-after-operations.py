@@ -1,10 +1,8 @@
 class Solution:
     def findSmallestInteger(self, nums: List[int], value: int) -> int:
-        bins = Counter(num % value for num in nums)
+        cnt = [0] * value
+        for x in nums:
+            cnt[x % value] += 1
 
-        ans = 0
-        while bins[ans % value] > 0:
-            bins[ans % value] -= 1
-            ans += 1
-
-        return ans
+        mn = min(cnt)
+        return mn * value + cnt.index(mn)
