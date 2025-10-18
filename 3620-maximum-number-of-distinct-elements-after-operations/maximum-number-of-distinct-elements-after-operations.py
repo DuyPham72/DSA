@@ -8,9 +8,14 @@ class Solution:
             lower = num-k
             upper = num+k
 
-            new_prev = max(prev + 1, lower)
-            if new_prev <= upper:
+            if prev < lower:
+                prev = lower
+            else:
+                prev += 1
+            
+            if upper >= prev:
                 count += 1
-                prev = new_prev
+            else:
+                prev -= 1
                     
         return count
