@@ -4,6 +4,5 @@ class Solution:
         for num in nums:
             count[num % value] += 1
 
-        print(count)
         mex = min(count)
         return mex*value + count.index(mex)
