@@ -13,14 +13,25 @@ class Solution:
         def rotate(s):
             return s[n-b:] + s[:n-b] 
 
-        ans = set()
-        def dfs(s):
-            if s in ans:
-                return 
-            ans.add(s)
-            dfs(add(s))
-            dfs(rotate(s))
-            return
+        seen = set([s])
+        q = deque([s])
+        smallest = s
 
-        dfs(s)
-        return min(ans)
+        while q:
+            cur = q.popleft()
+            if cur < smallest:
+                smallest = cur
+
+            # Operation 1: add
+            added = add(cur)
+            if added not in seen:
+                seen.add(added)
+                q.append(added)
+
+            # Operation 2: rotate
+            rotated = rotate(cur)
+            if rotated not in seen:
+                seen.add(rotated)
+                q.append(rotated)
+
+        return smallest
