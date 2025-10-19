@@ -4,17 +4,18 @@ class Solution:
         if m > n:
             return False
 
-        table = Counter(s1)
-        window = Counter(s2[:m])
+        table = [0]*26
+        window = [0]*26
+        for i in range(m):
+            table[ord(s1[i]) - ord('a')] += 1
+            window[ord(s2[i]) - ord('a')] += 1
 
         if window == table:
             return True
 
         for i in range(m, n):
-            window[s2[i]] += 1
-            window[s2[i-m]] -= 1
-            if window[s2[i - m]] == 0:
-                del window[s2[i - m]]
+            window[ord(s2[i]) - ord('a')] += 1
+            window[ord(s2[i-m]) - ord('a')] -= 1
 
             if window == table:
                 return True
