@@ -1,8 +1,9 @@
 class Solution:
     def findSmallestInteger(self, nums: List[int], value: int) -> int:
-        cnt = [0] * value
-        for x in nums:
-            cnt[x % value] += 1
+        count = [0]*value
+        for num in nums:
+            count[num % value] += 1
 
-        mn = min(cnt)
-        return mn * value + cnt.index(mn)
+        print(count)
+        mex = min(count)
+        return mex*value + count.index(mex)
