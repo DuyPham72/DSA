@@ -1,21 +1,23 @@
 class Solution:
     def checkInclusion(self, s1: str, s2: str) -> bool:
-        if len(s1) > len(s2):
+        m, n = len(s1), len(s2)
+        if m > n:
             return False
 
-        c1 = [0]*26
-        c2 = [0]*26
-        for c in s1:
-            c1[ord(c) - ord('a')] += 1
+        table = Counter(s1)
+        window = Counter(s2[:m])
 
-        window_size = len(s1)
-        for i in range(len(s2)):
-            c2[ord(s2[i]) - ord('a')] += 1
+        if window == table:
+            return True
 
-            if i >= window_size:
-                c2[ord(s2[i - window_size]) - ord('a')] -= 1
+        for i in range(m, n):
+            if s2[i] not in window:
+                window[s2[i]] = 1
+            else:
+                window[s2[i]] += 1
+            window[s2[i-m]] -= 1
 
-            if c1 == c2:
+            if window == table:
                 return True
 
         return False
