@@ -11,11 +11,10 @@ class Solution:
             return True
 
         for i in range(m, n):
-            if s2[i] not in window:
-                window[s2[i]] = 1
-            else:
-                window[s2[i]] += 1
+            window[s2[i]] += 1
             window[s2[i-m]] -= 1
+            if window[s2[i - m]] == 0:
+                del window[s2[i - m]]
 
             if window == table:
                 return True
