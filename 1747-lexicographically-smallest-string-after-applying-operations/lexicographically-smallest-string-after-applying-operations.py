@@ -22,13 +22,11 @@ class Solution:
             if cur < smallest:
                 smallest = cur
 
-            # Operation 1: add
             added = add(cur)
             if added not in seen:
                 seen.add(added)
                 q.append(added)
 
-            # Operation 2: rotate
             rotated = rotate(cur)
             if rotated not in seen:
                 seen.add(rotated)
