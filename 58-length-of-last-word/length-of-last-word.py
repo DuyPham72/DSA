@@ -1,11 +1,11 @@
 class Solution:
     def lengthOfLastWord(self, s: str) -> int:
         s = s.lstrip().rstrip()
-        ans = ''
+        ans = 0
         for c in s[::-1]:
             if c != ' ':
-                ans += c
+                ans += 1
             else:
-                break
+                return ans
 
-        return len(ans)
+        return ans
