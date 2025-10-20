@@ -3,10 +3,8 @@ class Solution:
         ans = 0
         for op in operations:
             if op[0] == '-' or op[-1] == '-':
-                sign = -1
+                ans -= 1
             else:
-                sign = 1
-
-            ans += sign
+                ans += 1
 
         return ans
