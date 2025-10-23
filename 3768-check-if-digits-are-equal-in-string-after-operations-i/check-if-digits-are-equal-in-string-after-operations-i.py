@@ -1,11 +1,16 @@
 class Solution:
     def hasSameDigits(self, s: str) -> bool:
         s = list(s)
-        s = [int(i) for i in s]
-
         n = len(s)
+
+        for i in range(n):
+            s[i] = int(s[i])
+
         while n > 2:
-            for i in range(1, n):
+            for i in range(n):
+                if i == 0:
+                    continue
+
                 s[i-1] = (s[i] + s[i-1]) % 10
 
             n -= 1
