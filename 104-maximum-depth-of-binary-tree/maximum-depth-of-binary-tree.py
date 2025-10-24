@@ -9,4 +9,16 @@ class Solution:
         if not root:
             return 0
 
-        return 1 + max(self.maxDepth(root.left), self.maxDepth(root.right))
+        q = deque([(root, 1)])
+        ans = 0
+        while q:
+            node, length = q.pop()
+
+            if not node:
+                continue
+
+            ans = max(ans, length)
+            q.append((node.left, 1+length))
+            q.append((node.right, 1+length))
+
+        return ans
