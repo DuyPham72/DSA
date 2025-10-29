@@ -1,13 +1,7 @@
 class Solution:
     def smallestNumber(self, n: int) -> int:
-        value = list(str(bin(n))[2:])
+        value = len(str(bin(n))[2:])
         
-        temp = Counter(value)
-        if len(temp.keys()) == 1:
-            return n
+        ans = ['1'] * value
 
-        for i, num in enumerate(value):
-            if num == '0':
-                value[i] = '1'
-
-        return int(''.join(value), 2)
+        return int(''.join(ans), 2)
