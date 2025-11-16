@@ -14,7 +14,7 @@ class Solution:
 
             left = diameter(node.left)
             right = diameter(node.right)
-            self.ans = max(self.ans, left + right)
+            self.ans = max(self.ans, left+right)
 
             return 1 + max(left, right)
 
