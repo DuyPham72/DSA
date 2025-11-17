@@ -1,9 +1,16 @@
 class Solution:
     def kLengthApart(self, nums: List[int], k: int) -> bool:
-        value = [i for i, num in enumerate(nums) if num == 1]
+        temp = 0
+        first = False
+        for i, num in enumerate(nums):
+            if first == False and num == 1:
+                first = True
+                temp = 0
+            elif first == True and num == 1:
+                if temp-1 < k:
+                    return False
+                temp = 0
+            temp += 1
 
-        for i in range(1, len(value)):
-            if value[i] - value[i-1] - 1 < k:
-                return False
 
         return True
