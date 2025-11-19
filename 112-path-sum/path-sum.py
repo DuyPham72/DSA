@@ -9,7 +9,7 @@ class Solution:
         if not root:
             return False
 
-        if root.left is None and root.right is None:
+        if not root.left and not root.right:
             return targetSum - root.val == 0
 
         left = self.hasPathSum(root.left, targetSum - root.val)
