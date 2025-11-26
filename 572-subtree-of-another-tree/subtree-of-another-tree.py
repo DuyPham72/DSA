@@ -4,24 +4,27 @@
 #         self.val = val
 #         self.left = left
 #         self.right = right
-def compare(p, q):
-    if not p and not q:
+def compare(root1, root2):
+    if not root1 and not root2:
         return True
-    if not p or not q:
+    if not root1 or not root2:
+        return False
+    if root1.val != root2.val:
         return False
 
-    if p.val != q.val:
-        return False
+    left = compare(root1.left, root2.left)
+    right = compare(root1.right, root2.right)
 
-    return compare(p.left, q.left) and compare(p.right, q.right)
+    return left and right
 
 class Solution:
     def isSubtree(self, root: Optional[TreeNode], subRoot: Optional[TreeNode]) -> bool:
         if not root:
             return False
 
-        if compare(root, subRoot):
-            return True
+        if root.val == subRoot.val:
+            if compare(root, subRoot):
+                return True
 
         left = self.isSubtree(root.left, subRoot)
         right = self.isSubtree(root.right, subRoot)
