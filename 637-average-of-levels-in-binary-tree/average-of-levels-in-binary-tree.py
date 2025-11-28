@@ -10,17 +10,17 @@ class Solution:
         ans = []
 
         while q:
-            temp = []
+            temp = 0
             n = len(q)
             for _ in range(n):
                 node = q.popleft()
-                temp.append(node.val)
+                temp += node.val
 
                 if node.left:
                     q.append(node.left)
                 if node.right:
                     q.append(node.right)
 
-            ans.append(sum(temp)/n)
+            ans.append(temp/n)
 
         return ans
