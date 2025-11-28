@@ -9,20 +9,19 @@ class Solution:
         if not root:
             return []
 
-        queue = deque([root])
-        result = []
+        ans = defaultdict(list)
+        q = deque([(0, root)])
+        while q:
+            level, node = q.popleft()
+            
+            if level not in ans:
+                ans[level] = [node.val]
+            else:
+                ans[level].append(node.val)
 
-        while queue:
-            temp = []
-            for _ in range(len(queue)):
-                node = queue.popleft()
-                if node.left:
-                    queue.append(node.left)
-                if node.right:
-                    queue.append(node.right)
+            if node.left:
+                q.append((level+1, node.left))
+            if node.right:
+                q.append((level+1, node.right))
 
-                temp.append(node.val)
-
-            result.append(temp)
-
-        return result
+        return [i for i in ans.values()]
