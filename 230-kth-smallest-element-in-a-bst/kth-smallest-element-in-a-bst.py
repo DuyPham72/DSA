@@ -19,7 +19,8 @@ class Solution:
                 self.ans = node.val
             self.value -= 1
 
-            dfs(node.right)
+            if self.value > 0:
+                dfs(node.right)
 
         dfs(root)
         return self.ans
