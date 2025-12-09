@@ -4,6 +4,7 @@ class Solution:
         ans = total
         for i in range(k, len(nums)):
             total += nums[i] - nums[i-k]
-            ans = max(ans, total)
+            if total > ans:
+                ans = total
 
         return ans/k
