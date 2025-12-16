@@ -4,7 +4,6 @@ class Solution:
         heap = [(-freq, key) for key, freq in count.items()]
         heapq.heapify(heap)
 
-        print(heap)
         ans = []
         for _ in range(k):
             freq, key = heapq.heappop(heap)
