@@ -6,7 +6,7 @@ class Solution:
         heapq.heapify(nums)
 
         temp = None
-        for i in range(k-1):
-            temp = heapq.heappop(nums)
+        for i in range(k):
+            temp = -heapq.heappop(nums)
 
-        return -heapq.heappop(nums)
+        return temp
