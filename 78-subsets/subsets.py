@@ -3,15 +3,16 @@ class Solution:
         ans = []
         n = len(nums)
 
-        def backtrack(temp, start):
+        def backtrack(temp=[], start=0):
             if len(temp) > n:
                 return
 
             ans.append(temp[:])
+
             for i in range(start, n):
                 temp.append(nums[i])
                 backtrack(temp, i+1)
                 temp.pop()
 
-        backtrack(temp=[], start=0)
+        backtrack()
         return ans
