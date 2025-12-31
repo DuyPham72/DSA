@@ -8,7 +8,7 @@ class Solution:
             value = sum(temp)
             if value > target:
                 return
-            if sum(temp) == target:
+            if value == target:
                 ans.append(temp[:])
                 return
 
