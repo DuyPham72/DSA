@@ -1,5 +1,6 @@
 class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
+        candidates.sort()
         ans = []
         temp = []
         n = len(candidates)
@@ -8,7 +9,7 @@ class Solution:
             value = sum(temp)
             if value > target:
                 return
-            if value == target:
+            if sum(temp) == target:
                 ans.append(temp[:])
                 return
 
