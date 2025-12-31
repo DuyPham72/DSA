@@ -1,6 +1,5 @@
 class Solution:
     def combinationSum(self, candidates: List[int], target: int) -> List[List[int]]:
-        candidates.sort()
         ans = []
         temp = []
         n = len(candidates)
