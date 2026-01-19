@@ -5,7 +5,8 @@ class Solution:
         for num in nums[1:]:
             if abs(num) < abs(ans):
                 ans = num
-            elif abs(num) == abs(ans) and ans < num:
-                ans = num
+            elif abs(num) == abs(ans):
+                if ans < num:
+                    ans = num
 
         return ans
