@@ -6,15 +6,22 @@
 
 class Solution:
     def detectCycle(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        table = {}
+        slow = fast = head
 
-        start = head
-        while start:
-            nextt = start.next
-            if nextt in table:
-                return nextt
-                
-            table[start] = nextt
-            start = start.next
+        # Phase 1: detect cycle
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
 
-        return start
+            if slow == fast:
+                break
+        else:
+            return None   # no cycle
+
+        # Phase 2: find entrance
+        slow = head
+        while slow != fast:
+            slow = slow.next
+            fast = fast.next
+
+        return slow
